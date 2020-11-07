@@ -42,7 +42,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\JheelP\Desktop\Sem 7\DSMC - Minor Project\VSCode\Code2\Code2;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\JheelP\Desktop\Sem 7\DSMC - Minor Project\VSCode\cudadsmc\Code2;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
