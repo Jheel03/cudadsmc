@@ -1,36 +1,31 @@
 #pragma once
+#include <initialization.h>
 
-void sorting(unsigned int n, unsigned int NX, unsigned int NY, double cellHeight, double cellLength, 
-	double *positionX, double *positionY, double *velocityX, double *velocityY, double *newPositionX, 
-	double *newPositionY, unsigned int *indexArray, double *newVelocityX, double *newVelocityY) {
+void indexing() {
+
 	unsigned int mainAcc = 0;
-	//printf("\nSorting");
 	for (unsigned int i = 0; i < NY; i++) {
 		for (unsigned int j = 0; j < NX; j++) {
 			unsigned int cellAcc = 0;
-			for (unsigned int k = 0; k < n; k++) {
-				if (positionY[k] > i * cellHeight && positionY[k] <= (i + 1) * cellHeight && positionX[k] > j * cellLength && positionX[k] <= (j + 1) * cellLength) {
-					newPositionX[mainAcc + cellAcc] = positionX[k];
-					newPositionY[mainAcc + cellAcc] = positionY[k];
-					newVelocityX[mainAcc + cellAcc] = velocityX[k];
-					newVelocityY[mainAcc + cellAcc] = velocityY[k];
+			for (unsigned int k = 0; k < TotalSimulatedParticles; k++) {
+				if (PosY[k] > i * DY && PosY[k] <= (i + 1) * DY && PosX[k] > j * DX && PosX[k] <= (j + 1) * DX) {
+					NewPosX[mainAcc + cellAcc] = PosX[k];
+					NewPosY[mainAcc + cellAcc] = PosY[k];
+					NewVelX[mainAcc + cellAcc] = VelX[k];
+					NewVelY[mainAcc + cellAcc] = VelY[k];
+					NewVelZ[mainAcc + cellAcc] = VelZ[k];
 					cellAcc++;
 				}
 			}
-			indexArray[i * NX + j] = cellAcc;
-			//printf("\n%u", cellAcc);
+			IndexArray[i * NX + j] = cellAcc;
 			mainAcc += cellAcc;
 		}
-		//printf("\n%u", mainAcc);
 	}
-}
 
-
-void indexingInitialization(unsigned int* totalSimulatedParticles, unsigned int NX, unsigned int NY, double cellHeight, double cellLength,
-	double* positionX, double* positionY, double* velocityX, double *velocityY, double* newPositionX, double* newPositionY, 
-	unsigned int* indexArray, double* newVelocityX, double* newVelocityY) {
-
-	sorting(*totalSimulatedParticles, NX, NY, cellHeight, cellLength, positionX, positionY, velocityX, velocityY,
-		newPositionX, newPositionY, indexArray, newVelocityX, newVelocityY);
+	cudaMemcpy(PosX, NewPosX, TotalSimulatedParticles * sizeof(double), cudaMemcpyHostToHost);
+	cudaMemcpy(PosY, NewPosY, TotalSimulatedParticles * sizeof(double), cudaMemcpyHostToHost);
+	cudaMemcpy(VelX, NewVelX, TotalSimulatedParticles * sizeof(double), cudaMemcpyHostToHost);
+	cudaMemcpy(VelY, NewVelY, TotalSimulatedParticles * sizeof(double), cudaMemcpyHostToHost);
+	cudaMemcpy(VelZ, NewVelZ, TotalSimulatedParticles * sizeof(double), cudaMemcpyHostToHost);
 
 }

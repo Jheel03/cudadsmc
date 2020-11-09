@@ -83,14 +83,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="binaryCollisions.h" />
-    <ClInclude Include="boundaryCollisions.cuh" />
-    <ClInclude Include="boundaryCollisionsKernels.cuh" />
-    <ClInclude Include="constants.h" />
-    <ClInclude Include="fileOperations.h" />
     <ClInclude Include="indexing.h" />
-    <ClInclude Include="initialization.cuh" />
-    <ClInclude Include="particleGenerator.cuh" />
     <ClInclude Include="rayleighDistribution.cuh" />
+    <ClInclude Include="translation_boundaryCollisions.h" />
+    <ClInclude Include="initialization.h" />
+    <ClInclude Include="fileOperations.h" />
     <ClInclude Include="memoryOps.cuh" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

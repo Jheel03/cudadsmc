@@ -9,28 +9,19 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="constants.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="initialization.cuh">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="particleGenerator.cuh">
-      <Filter>Modules</Filter>
-    </ClInclude>
     <ClInclude Include="fileOperations.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="rayleighDistribution.cuh">
       <Filter>Modules</Filter>
     </ClInclude>
     <ClInclude Include="memoryOps.cuh">
       <Filter>Modules</Filter>
     </ClInclude>
-    <ClInclude Include="boundaryCollisionsKernels.cuh">
+    <ClInclude Include="initialization.h">
       <Filter>Modules</Filter>
     </ClInclude>
-    <ClInclude Include="boundaryCollisions.cuh">
+    <ClInclude Include="translation_boundaryCollisions.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="rayleighDistribution.cuh">
       <Filter>Modules</Filter>
     </ClInclude>
     <ClInclude Include="indexing.h">

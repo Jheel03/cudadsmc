@@ -5,19 +5,19 @@
 #include "curand.h"
 #include <stdlib.h>
 
-__global__ void rayleighKernel(double sigma, unsigned int n, double *devPointer) {
-	unsigned int tid = blockIdx.x*blockDim.x + threadIdx.x;
+__global__ void rayleighKernel(double sigma, unsigned int n, double* devPointer) {
+	unsigned int tid = blockIdx.x * blockDim.x + threadIdx.x;
 	if (tid < n) {
 		devPointer[tid] = sigma * sqrt(-2 * log(devPointer[tid]));
 	}
 }
 
-unsigned int initializeRayleigh(size_t n, double *returnArray, double sigma, unsigned long int seed) {
+unsigned int initializeRayleigh(size_t n, double* returnArray, double sigma, unsigned long int seed) {
 
 	curandGenerator_t generator;
 	curandCreateGenerator(&generator, CURAND_RNG_PSEUDO_MTGP32);
 	//unsigned long long seed;
-	
+
 	//seed = 12345;
 	curandSetPseudoRandomGeneratorSeed(generator, seed);
 	curandGenerateUniformDouble(generator, returnArray, n);

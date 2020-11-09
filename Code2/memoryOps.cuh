@@ -1,4 +1,5 @@
 #pragma once
+#include <initialization.h>
 
 int assignString(char *str, char assignstr[], int n) {
 	for (int i = 0; i < n; i++) {
